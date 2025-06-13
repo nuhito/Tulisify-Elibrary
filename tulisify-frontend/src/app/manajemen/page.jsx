@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import ModalTambahBuku from "./ModalTambahBuku";
+import ModalEditBuku from "./ModalEditBuku";
 
 export default function BookManagementPage() {
-  const router = useRouter();
   const [books, setBooks] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showModalTambah, setShowModalTambah] = useState(false);
+  const [selectedBookId, setSelectedBookId] = useState(null);
 
   useEffect(() => {
     fetch("/api/books")
@@ -56,6 +56,18 @@ export default function BookManagementPage() {
     }
   };
 
+  const handleEdit = (id) => {
+    setSelectedBookId(id); // Tampilkan modal edit
+  };
+
+  const handleCloseEdit = () => {
+    setSelectedBookId(null); // Tutup modal edit
+    // Refresh data buku setelah edit
+    fetch("/api/books")
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  };
+
   return (
     <div className="bg-[#F2F1EE] min-h-screen">
       <nav className="bg-white p-4 shadow flex justify-between items-center">
@@ -77,7 +89,7 @@ export default function BookManagementPage() {
           <h1 className="text-3xl font-bold text-[#3D5A80]">Daftar Buku</h1>
           <button
             className="bg-[#52769B] text-white px-5 py-2 rounded-lg"
-            onClick={() => setShowModal(true)}
+            onClick={() => setShowModalTambah(true)}
           >
             Tambah Buku
           </button>
@@ -128,7 +140,7 @@ export default function BookManagementPage() {
                     <td className="px-4 py-2 flex gap-2">
                       <button
                         className="bg-yellow-400 text-white px-3 py-1 rounded"
-                        onClick={() => router.push(`/edit?id=${book.id}`)}
+                        onClick={() => handleEdit(book.id)}
                       >
                         Edit
                       </button>
@@ -153,8 +165,14 @@ export default function BookManagementPage() {
         </div>
       </main>
 
-      {showModal && (
-        <ModalTambahBuku onClose={() => setShowModal(false)} />
+      {/* Modal Tambah Buku */}
+      {showModalTambah && (
+        <ModalTambahBuku onClose={() => setShowModalTambah(false)} />
+      )}
+
+      {/* Modal Edit Buku */}
+      {selectedBookId && (
+        <ModalEditBuku bookId={selectedBookId} onClose={handleCloseEdit} />
       )}
     </div>
   );

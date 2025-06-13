@@ -65,9 +65,9 @@ export default function ModalTambahBuku({ onClose }) {
           </div>
 
           <div className="mb-4">
-            <label className="block mb-1 font-medium text-white bg-[#324755] rounded px-2 py-1">
-              Upload File PDF (biarkan kosong jika tidak diubah)
-            </label>
+          <label className="block mb-1 font-medium">
+            Upload File PDF (biarkan kosong jika tidak diubah)
+          </label>
             <input
               type="file"
               accept=".pdf"
