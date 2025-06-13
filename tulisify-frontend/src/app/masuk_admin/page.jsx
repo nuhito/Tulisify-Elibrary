@@ -13,7 +13,7 @@ export default function MasukAdminPage() {
     e.preventDefault();
 
     if (username === "admin123" && password === "123456789") {
-      router.push("/admin");
+      router.push("/manajemen");
     } else {
       setMessage("Username atau password salah!");
     }

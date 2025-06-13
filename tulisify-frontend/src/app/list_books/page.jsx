@@ -37,10 +37,12 @@ export default function ListBooksPage() {
   return (
     <div className="min-h-screen bg-[#F3F1EA]">
       {/* Navbar */}
-      <nav className="bg-black text-white px-6 py-4 flex items-center justify-between">
-        <Link href="/">
-          <img src="/assets/logo_tulisify.png" alt="Tulisify Logo" className="h-10" />
-        </Link>
+      <nav className="bg-[#324755] p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link href="/">
+            <img src="/assets/logo_tulisify.png" alt="Tulisify Logo" className="h-10" />
+          </Link>
+        </div>
       </nav>
 
       {/* Heading */}
