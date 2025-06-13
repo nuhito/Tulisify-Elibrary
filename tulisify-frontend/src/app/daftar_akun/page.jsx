@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function DaftarAkunPage() {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
   const router = useRouter();
@@ -15,14 +15,22 @@ export default function LoginPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simulasi verifikasi login (ganti dengan fetch ke API kalau backend sudah ada)
-    if (formData.username === "user123" && formData.password === "123456789") {
-      router.push("/list_books"); // redirect setelah login sukses
+    if (formData.password.length < 8) {
+      setMessage("Password harus minimal 8 karakter.");
     } else {
-      setMessage("Akun belum terdaftar atau username/password salah.");
+      // Simulasi pendaftaran (ganti dengan fetch ke API Laravel kalau backend sudah ada)
+      if (formData.username && formData.password) {
+        setMessage("Akun berhasil didaftarkan!");
+        // Redirect ke login setelah 2 detik (jika mau)
+        setTimeout(() => {
+          router.push("/login");
+        }, 2000);
+      } else {
+        setMessage("Gagal mendaftarkan akun. Username mungkin sudah digunakan.");
+      }
     }
   };
 
@@ -41,7 +49,7 @@ export default function LoginPage() {
       <div className="flex flex-col md:flex-row flex-grow">
         {/* Left Illustration */}
         <div className="hidden md:block md:w-1/2 bg-red-500">
-          <img src="/assets/ilustrasi_tulisify.png" alt="Logo" className="w-full h-full object-cover" />
+          <img src="/assets/ilustrasi_tulisify.png" alt="ill" className="w-full h-full object-cover" />
         </div>
 
         {/* Right Form */}
@@ -50,9 +58,9 @@ export default function LoginPage() {
             className="w-full max-w-md flex flex-col items-center gap-4"
             onSubmit={handleSubmit}
           >
-            <Image src="/assets/login_icon.png" alt="checkmark" width={120} height={120} />
+            <Image src="/assets/icon_dafkun.png" alt="daftar-logo" width={120} height={120} />
 
-            <h2 className="text-2xl font-semibold text-[#324755]">Login</h2>
+            <h2 className="text-2xl font-semibold text-[#324755]">Daftar Akun</h2>
 
             {message && (
               <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded w-full text-center">
@@ -87,7 +95,7 @@ export default function LoginPage() {
               type="submit"
               className="w-full py-2 mt-3 border border-[#B37056] text-[#B37056] rounded bg-transparent hover:bg-[#B37056] hover:text-white transition"
             >
-              Login
+              Daftar
             </button>
           </form>
         </div>

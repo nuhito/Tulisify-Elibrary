@@ -32,7 +32,7 @@ export default function MasukPage() {
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-6">
           <form className="w-full max-w-md flex flex-col items-center gap-4">
             <Image src="/assets/user_icon.png" alt="User Logo" width={120} height={120} />
-            <h2 className="text-2xl font-semibold text-[#B37056]">Masuk</h2>
+            <h2 className="text-2xl font-semibold text-[#324755]">Masuk</h2>
 
             {/* Buttons */}
             <Link href="/login" className="w-full">

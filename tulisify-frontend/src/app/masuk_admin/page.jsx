@@ -51,7 +51,7 @@ export default function MasukAdminPage() {
             <figure className="flex justify-center mb-4">
               <img src="/assets/icon_admin.png" alt="admin-logo" width={120} />
             </figure>
-            <h2 className="text-2xl font-semibold text-[#B37056] mb-4">
+            <h2 className="text-2xl font-semibold text-[#324755] mb-4">
               Masuk Sebagai Admin
             </h2>
 

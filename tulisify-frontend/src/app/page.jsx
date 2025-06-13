@@ -25,7 +25,7 @@ export default function Home() {
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-6">
           <form className="w-full max-w-md flex flex-col items-center gap-4">
             <Image src="/assets/tos.png" alt="tos" width={120} height={120} />
-            <h2 className="text-2xl font-semibold text-[#B37056]">Selamat Datang di Tulisify!</h2>
+            <h2 className="text-2xl font-semibold text-[#324755]">Selamat Datang di Tulisify!</h2>
 
             <Link href="/masuk" className="w-full">
             <button type="button" className="btn w-full py-2 mt-3 bg-[#B37056] hover:bg-[#a65f48] text-white rounded">
